@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Sightings(model.Model):
+class Sightings(models.Model):
     
     Latitude = models.FloatField()
     
@@ -11,8 +11,8 @@ class Sightings(model.Model):
     Unique_Squirrel_ID = models.CharField()
 
     SHIFT =(
-            (‘AM’,’AM’),
-            (‘PM’,’PM’),
+            ('AM','AM'),
+            ('PM','PM'),
             )
     
     Shift = models.CharField(choices=SHIFT)
@@ -20,23 +20,23 @@ class Sightings(model.Model):
     Date = models.DateField()
 
     AGE =(
-            (‘Adult’,’Adult’),
-            (‘Juvenile’,’ Juvenile’),
+            ('Adult','Adult'),
+            ('Juvenile','Juvenile'),
             )
 
     Age = models.CharField(choices=AGE)
 
     FUR_CHOICES=(
-            (‘Gray’,’Gray’),
-            (‘Cinnamon’,’CInnamon’),
-            (’Black’, ‘Black’),
+            ('Gray','Gray'),
+            ('Cinnamon','CInnamon'),
+            ('Black', 'Black'),
             )
 
     Primary_Fur_Color = models.CharField(choices=FUR_CHOICES)
     
     LOCATION = (
-            (‘Ground Plane’,’ Ground Plane’),
-            (‘Above Ground’,’ Above Ground’),
+            ('Ground Plane','Ground Plane'),
+            ('Above Ground','Above Ground'),
             )
 
     Location = models.CharField(choices = LOCATION)
