@@ -8,14 +8,17 @@ class Sightings(models.Model):
     
     Longitude = models.FloatField()
 
-    Unique_Squirrel_ID = models.CharField()
+    Unique_Squirrel_ID = models.CharField(max_length = 100)
 
     SHIFT =(
             ('AM','AM'),
             ('PM','PM'),
             )
     
-    Shift = models.CharField(choices=SHIFT)
+    Shift = models.CharField(
+            choices=SHIFT,
+            max_length = 2,
+            )
 
     Date = models.DateField()
 
@@ -24,7 +27,10 @@ class Sightings(models.Model):
             ('Juvenile','Juvenile'),
             )
 
-    Age = models.CharField(choices=AGE)
+    Age = models.CharField(
+            choices=AGE,
+            max_length = 20,
+            )
 
     FUR_CHOICES=(
             ('Gray','Gray'),
@@ -32,23 +38,29 @@ class Sightings(models.Model):
             ('Black', 'Black'),
             )
 
-    Primary_Fur_Color = models.CharField(choices=FUR_CHOICES)
+    Primary_Fur_Color = models.CharField(
+            choices=FUR_CHOICES,
+            max_length = 100,
+            )
     
     LOCATION = (
             ('Ground Plane','Ground Plane'),
             ('Above Ground','Above Ground'),
             )
 
-    Location = models.CharField(choices = LOCATION)
+    Location = models.CharField(
+            choices = LOCATION,
+            max_length = 50,
+            )
      
-    Specific_Location = models.CharField()
+    Specific_Location = models.CharField(max_length = 100)
 
     Running = models.BooleanField()
     Chasing = models.BooleanField()
     Climbing = models.BooleanField()
     Eating = models.BooleanField()
     Foraging = models.BooleanField()
-    Other_Activities = models.CharField()
+    Other_Activities = models.CharField(max_length = 100)
     Kuks = models.BooleanField()
     Quaas = models.BooleanField()
     Moans = models.BooleanField()
