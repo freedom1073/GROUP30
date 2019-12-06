@@ -9,35 +9,41 @@ class Command(BaseCommand):
         parser.add_argument('path', type=str, help='Please enter the path to the csv file.')
 
     def handle(self, *args, **kwargs):
-        path = kwargs['path']
-        with open(path, 'rb') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                b = Sightings(
-                        Latitude = row['Y'],
-                        Longitude = row['X'],
-                        Unique_Squirrel_ID = row['Unique Squirrel ID'],  
-                        Shift = row['PM'],
-                        Date = row['Date'],
-                        Age = row['Age'],
-                        Primary_Fur_Color = row['Primary Fur Color'],
-                        Location = row['Location'],
-                        Specific_Location = row['Specific Location'],
-                        Running = row['Running'],
-                        Chasing = row['Chasing'],
-                        Climbing = row['Climbing'],
-                        Eating = row['Eating'],
-                        Foraging = row['Foraging'],
-                        Other Activities = row['Other Activities'],
-                        Kuks = row['Kuks'],
-                        Quaas = row['Quaas'],
-                        Moans = row['Moans'],
-                        Tail_flags = row['Tail flags'],
-                        Tail_twitches = row['Tail twitches'],
-                        Approaches = row['Approaches'],
-                        Indifferent = row['Indifferent'],
-                        Runs_from = row['Runs from'],
-                        )
-                b.save()
+        def str_to_bool(s):
+            if s=='TRUE':
+                return True
+            if s=='FALSE':
+                return False
 
-            self.stdout.write(self.style.SUCCESS('Congratulations! Successfully import data.'))
+        with open(kwargs['path']) as csvfile:
+            reader = csv.DictReader(csvfile)
+            data = list(reader)
+        
+        for row in data:
+            b = Sightings(
+                    Latitude = row['Y'],
+                    Longitude = row['X'],
+                    Unique_Squirrel_ID = row['Unique Squirrel ID'],  
+                    Shift = row['Shift'],
+                    Date = row['Date'],
+                    Age = row['Age'],
+                    Primary_Fur_Color = row['Primary Fur Color'],
+                    Location = row['Location'],
+                    Specific_Location = row['Specific Location'],
+                    Running = str_to_bool(row['Running']),
+                    Chasing = str_to_bool(row['Chasing']),
+                    Climbing = str_to_bool(row['Climbing']),
+                    Eating = str_to_bool(row['Eating']),
+                    Foraging = str_to_bool(row['Foraging']),
+                    Other_Activities = row['Other Activities'],
+                    Kuks = str_to_bool(row['Kuks']),
+                    Quaas = str_to_bool(row['Quaas']),
+                    Moans = str_to_bool(row['Moans']),
+                    Tail_flags = str_to_bool(row['Tail flags']),
+                    Tail_twitches = str_to_bool(row['Tail twitches']),
+                    Approaches = str_to_bool(row['Approaches']),
+                    Indifferent = str_to_bool(row['Indifferent']),
+                    Runs_from = str_to_bool(row['Runs from']),
+                    )
+            b.save()
+
