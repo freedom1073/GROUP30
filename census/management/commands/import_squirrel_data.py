@@ -10,20 +10,20 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         def str_to_bool(s):
-            if s=='TRUE':
+            if s=='true':
                 return True
-            if s=='FALSE':
+            if s=='false':
                 return False
 
         with open(kwargs['path']) as csvfile:
             reader = csv.DictReader(csvfile)
             data = list(reader)
-        
+
         for row in data:
             b = Sightings(
-                    Latitude = row['Y'],
-                    Longitude = row['X'],
-                    Unique_Squirrel_ID = row['Unique Squirrel ID'],  
+                    Latitude = float(row['Y']),
+                    Longitude = float(row['X']),
+                    Unique_Squirrel_ID = row['Unique Squirrel ID'],
                     Shift = row['Shift'],
                     Date = row['Date'],
                     Age = row['Age'],
@@ -46,4 +46,3 @@ class Command(BaseCommand):
                     Runs_from = str_to_bool(row['Runs from']),
                     )
             b.save()
-

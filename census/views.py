@@ -26,4 +26,14 @@ def map(request):
    # context = {'address_longitude': json.dumps(address_longitude),
     #        'address_latitude': json.dumps(address_latitude), 'address_data': json.dumps(address_data)}
     return render(request,'census/map.html',context)
-# Create your views here.
+
+def stats(request):
+    sightings = Sightings.objects.all() 
+    context = {'content': sightings}
+    return render(request, "census/stats.html", context)
+
+def display(request):
+    sightings = Sightings.objects.all()
+    context = {'content': sightings}
+    return render(request, "census/sightings.html", context)
+
