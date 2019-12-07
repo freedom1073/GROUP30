@@ -1,34 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sightings Stats</title>
-</head>
+<html>
 <body>
-
-<table border="1">
-    <thead>
-    <tr>
-        <th>Latitude</th>
-        <th>Longitude</th>
-        <th>Unique Squirrel ID</th>
-        <th>Shift</th>
-        <th>Date</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for sighting in content %}
-        <tr>
-            <td>{{ sighting.Latitude }}</td>
-            <td>{{ sighting.Longitude }}</td>
-            <td>{{ sighting.Unique_Squirrel_ID }}</td>
-            <td>{{ sighting.Shift }}</td>
-            <td>{{ sighting.Date }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
-
+    <li>There are {{ num }} samples in our database.</li>
+    <li>The average latitude of all sightings is {{ ave_la.Latitude__avg }}.</li>
+    <li>The average longitude of all sightings is {{ ave_lo.Longitude__avg }}.</li>
+    <li>The probability that the observed squirrel is running is {{running_pro}}.</li>
+    <li>The probability that the observed squirrel is chasing is {{chasing_pro}}.</li>
 </body>
 </html>
+
