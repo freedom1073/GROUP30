@@ -12,9 +12,8 @@ def index(request):
 def map(request):
     content = Sightings.objects.all()
     context = {'sightings': content}
-   # context = {'address_longitude': json.dumps(address_longitude),
-    #        'address_latitude': json.dumps(address_latitude), 'address_data': json.dumps(address_data)}
     return render(request,'census/map.html',context)
+
 def stats(request):
     sightings = Sightings.objects.all() 
     context = {'content': sightings}
@@ -29,7 +28,6 @@ def edit(request, squirrel_id):
     squirrel = Sightings.objects.get(Unique_Squirrel_ID=squirrel_id)
     if request.method == 'POST':
         form = SightingsForm(request.POST, instance=squirrel)
-        # check data with form
         if form.is_valid():
             form.save()
             return redirect(f'/census/sightings/{squirrel_id}')
