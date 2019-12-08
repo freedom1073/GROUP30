@@ -27,13 +27,13 @@ def display(request):
     context = {'content': sightings}
     return render(request, "census/sightings.html", context)
 
-def edit(request, unique_squirrel_id):
-    squirrel = Sightings.objects.get(Unique_Squirrel_ID=unique_squirrel_id)
+def edit(request, squirrel_id):
+    squirrel = Sightings.objects.get(Unique_Squirrel_ID=squirrel_id)
     if request.method == 'POST':
         form = SightingsForm(request.POST, instance=squirrel)
         if form.is_valid():
             form.save()
-            return redirect(f'/census/sightings/{unique_squirrel_id}')
+            return redirect(f'/census/sightings/{squirrel_id}')
     else:
         form = SightingsForm(instance=squirrel)
 
