@@ -10,7 +10,7 @@ def index(request):
 
 def map(request):
     content = Sightings.objects.all()
-    context = {'sightings': content}
+    context = {'sightings': content[:100]}
     return render(request,'census/map.html',context)
 
 def stats(request):
@@ -28,18 +28,19 @@ def display(request):
     return render(request, "census/sightings.html", context)
 
 def edit(request, squirrel_id):
-    squirrel = Sightings.objects.get(Unique_Squirrel_ID=squirrel_id)
+    squirrel = Sightings.objects.get(id=squirrel_id)
     if request.method == 'POST':
         form = SightingsForm(request.POST, instance=squirrel)
         if form.is_valid():
             form.save()
-            return redirect(f'/census/sightings/{squirrel_id}')
+            return redirect(f'/sightings/{squirrel_id}')
     else:
         form = SightingsForm(instance=squirrel)
 
     context = {
         'form': form,
     }
+    return render(request,'census/edit.html',context)
 
 def add(request):
     if request.method == 'POST':
@@ -47,7 +48,7 @@ def add(request):
         # check data with form
         if form.is_valid():
             form.save()
-            return redirect(f'/adopt/list/')
+            return redirect(f'/sightings/add')
     else:
         form = SightingsForm()
 
@@ -55,3 +56,4 @@ def add(request):
         'form': form,
         'squirrel': True,
     }
+    return render(request, 'census/edit.html', context)
