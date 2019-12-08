@@ -28,7 +28,7 @@ def display(request):
     return render(request, "census/sightings.html", context)
 
 def edit(request, squirrel_id):
-    squirrel = Sightings.objects.get(id=squirrel_id)
+    squirrel = Sightings.objects.get(Unique_Squirrel_ID=squirrel_id)
     if request.method == 'POST':
         form = SightingsForm(request.POST, instance=squirrel)
         if form.is_valid():
