@@ -1,3 +1,3 @@
-from project.wsgi import application
+from group30.wsgi import application
 
 app = application
