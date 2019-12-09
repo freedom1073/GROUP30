@@ -5,19 +5,21 @@
     <title>Sightings</title>
 </head>
 <body>
-
+    <a href="add">Click here to add a new sighting.</a>
 <table border="1">
     <thead>
     <tr>
         <th>Unique Squirrel ID</th>
-	<th>Edit Operation</th>
+        <th>Edit Operation</th>
     </tr>
     </thead>
     <tbody>
     {% for sighting in content %}
         <tr>
             <td>{{ sighting.Unique_Squirrel_ID }}</td>
-            <td></td>
+            <td>
+                <a href="{{ sighting.Unique_Squirrel_ID }}">Update</a>
+            </td>
         </tr>
     {% endfor %}
     </tbody>
