@@ -20,10 +20,7 @@ class Sightings(models.Model):
             max_length = 4, 
             )
     
-    Date = models.DateField( 
-            #max_length = 8,
-            #help_text="Please use the following format: MMDDYYYY.",   
-            )
+    Date = models.DateField()
     
     AGE =(
             ('Adult','Adult'),
