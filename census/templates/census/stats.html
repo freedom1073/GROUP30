@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
+  <head>
     <style>
-        BODY {background-image: "https://www.publicdomainpictures.net/pictures/20000/velka/squirrel-in-snow-11298746798ZJv.jpg";background-position: center;background-repeat: no-repeat;background-attachment: fixed;}
+      BODY {background-image: "https://www.publicdomainpictures.net/pictures/20000/velka/squirrel-in-snow-11298746798ZJv.jpg";background-position: center;background-repeat: no-repeat;background-attachment: fixed;}
     </style>
-<body background="https://www.publicdomainpictures.net/pictures/20000/velka/squirrel-in-snow-11298746798ZJv.jpg" >
+  </head>
+  <body background="https://www.publicdomainpictures.net/pictures/20000/velka/squirrel-in-snow-11298746798ZJv.jpg" >
+    <h1> Let's look at some general stats about the sightings!</h1>
+    <br>
     <li>There are {{ num }} samples in our database.</li>
+    <br>
     <li>The average latitude of all sightings is {{ ave_la.Latitude__avg }}.</li>
+    <br>
     <li>The average longitude of all sightings is {{ ave_lo.Longitude__avg }}.</li>
+    <br>
     <li>The probability that the observed squirrel is running is {{running_pro}}.</li>
+    <br>
     <li>The probability that the observed squirrel is chasing is {{chasing_pro}}.</li>
-</body>
+  </body>
 </html>
 
