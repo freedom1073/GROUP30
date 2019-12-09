@@ -1,12 +1,15 @@
 <!doctype html>
 <html>
-  <body>
+    <style>
+        BODY {background-image: "https://www.publicdomainpictures.net/pictures/20000/velka/squirrel-in-snow-11298746798ZJv.jpg";background-position: center;background-repeat: no-repeat;background-attachment: fixed;}
+    </style>
+  <body background="https://www.publicdomainpictures.net/pictures/20000/velka/squirrel-in-snow-11298746798ZJv.jpg">
     <form method="post">
       {% csrf_token %}
 
       {{ form.as_p }}
       <br>
-      <input type="submit" name="Submit">
+      <input type="submit" class="btn btn-info" name="Submit">
     </form>
   </body>
 </html>
